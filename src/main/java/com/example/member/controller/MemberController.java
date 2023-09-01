@@ -28,5 +28,20 @@ public String save(@ModelAttribute MemberDTO memberDTO){
         memberService.save(memberDTO);
         return "index";
     }
+
+    @PostMapping("/member/login")
+    public String login(@ModelAttribute MemberDTO memberDTO)
+    {
+        memberService.login(memberDTO);
+        if(loginResult != null)
+        {
+            // login 성공
+            return "main";
+        }
+        else {
+            // login 실패
+            return "login";
+        }
+    }
 }
 
